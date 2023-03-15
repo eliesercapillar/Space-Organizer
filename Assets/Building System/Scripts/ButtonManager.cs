@@ -22,8 +22,11 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] private Button _furnitureButton;
     [SerializeField] private Button _toolsButton;
 
+    [SerializeField] private Image _loadButtonImage;
+
     private bool _isFurnitureDisplayed;
     private bool _isToolsDisplayed;
+    private bool _isLoadMenuDisplayed;
 
     // ---------------------------------------------------------------------------
 
@@ -39,6 +42,7 @@ public class ButtonManager : MonoBehaviour
     {
         _isFurnitureDisplayed = false;
         _isToolsDisplayed = false;
+        _isLoadMenuDisplayed = false;
     }
 
     public void SaveButton()
@@ -48,12 +52,32 @@ public class ButtonManager : MonoBehaviour
 
     public void LoadButton()
     {
-        _loadScreenPanel.SetActive(true;
+        if (_isLoadMenuDisplayed)
+        {
+            _loadScreenPanel.SetActive(false);
+            _loadButtonImage.color = _blue;
+        }
+        else
+        {
+            _loadScreenPanel.SetActive(true);
+            _loadButtonImage.color = _pink;
+            if (_isFurnitureDisplayed)
+            {
+                FurnitureButton();
+            }
+            else if (_isToolsDisplayed)
+            {
+                ToolsButton();
+            }
+        }
+        _isLoadMenuDisplayed = !_isLoadMenuDisplayed;
     }
 
     public void CloseLoadScreen()
     {
         _loadScreenPanel.SetActive(false);
+        _loadButtonImage.color = _blue;
+        _isLoadMenuDisplayed = false;
     }
 
     public void CameraButton()
@@ -68,6 +92,11 @@ public class ButtonManager : MonoBehaviour
 
     public void FurnitureButton()
     {
+        if (_isLoadMenuDisplayed)
+        {
+            _loadScreenPanel.SetActive(false);
+            _loadButtonImage.color = _blue;
+        }
         if (_isFurnitureDisplayed)
         {
             Debug.Log("Furniture Was Currently Displayed. Now Hiding.");
@@ -116,6 +145,11 @@ public class ButtonManager : MonoBehaviour
 
     public void ToolsButton()
     {
+        if (_isLoadMenuDisplayed)
+        {
+            _loadScreenPanel.SetActive(false);
+            _loadButtonImage.color = _blue;
+        }
         if (_isToolsDisplayed)
         {
             Debug.Log("Tools Was Currently Displayed. Now Hiding.");
@@ -147,6 +181,7 @@ public class ButtonManager : MonoBehaviour
             _furnitureButton.interactable = false;
             StartCoroutine(WaitForAnim());
         }
+
 
         IEnumerator WaitForAnim()
         {
