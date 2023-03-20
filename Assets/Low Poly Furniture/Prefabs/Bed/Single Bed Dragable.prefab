@@ -110,8 +110,9 @@ GameObject:
   - component: {fileID: 6140187749186609174}
   - component: {fileID: 8273855167509157084}
   - component: {fileID: 3530994727930206073}
+  - component: {fileID: 6874207138697461918}
   m_Layer: 11
-  m_Name: Single Bed
+  m_Name: Single Bed Dragable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7625261572977751305}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0.75, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -197,3 +198,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6686336675155859855, guid: 88bfcb4cfbf572c4090d7535fdd4fed5, type: 3}
+--- !u!114 &6874207138697461918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625261572977751305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d3f248733cdf345b82f690f30e869b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objToPlace: {fileID: 7625261572977751305}
+  _mask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _lastPosY: 0.75
+  _matGrid: {fileID: 2100000, guid: 1869d9f7a506e1741bfceee01be1fc94, type: 2}
+  _matDefault: {fileID: 2100000, guid: 276ed10f715292b4d98f9db1057e17da, type: 2}

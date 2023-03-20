@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7327850956260463358}
   - component: {fileID: 4779786877995165236}
   - component: {fileID: 131712909485329647}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Standart Bookshelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}

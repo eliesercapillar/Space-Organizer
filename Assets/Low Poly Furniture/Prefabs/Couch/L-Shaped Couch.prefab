@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8739557644202169913}
   - component: {fileID: 6822340004189610739}
   - component: {fileID: 7330250172818563803}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: L-Shaped Couch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

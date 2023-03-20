@@ -5,6 +5,26 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - BED
+  - BOOKSHELF
+  - LBOOKSHELF
+  - THINCHAIR
+  - STANDARDCHAIR
+  - ARMCHAIR
+  - COUCH
+  - LCOUCH
+  - LAMP
+  - NIGHTSTAND
+  - DESK
+  - LDESK
+  - RECTANGLETABLE
+  - ROUNDTABLE
+  - SQUARETABLE
+  - WARDROBE
+  - TWINWARDDROBE
+  - Environment
+  - BOOKSHELF1
+  - LBOOKSHELF2
   layers:
   - Default
   - TransparentFX
@@ -17,7 +37,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Furniture
   - 
   - 
   - 

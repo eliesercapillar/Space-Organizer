@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3922481245374080878}
   - component: {fileID: 1264249947410633636}
   - component: {fileID: 7623794272303314246}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

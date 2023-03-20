@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8075091695115650474}
   - component: {fileID: 6337842673730433376}
   - component: {fileID: 2517375357699431544}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: L-Shaped Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

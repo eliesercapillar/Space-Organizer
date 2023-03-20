@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5627911307389560523}
   - component: {fileID: 7637732017929130497}
   - component: {fileID: 1048388346605285124}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Twin Wardrobe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
