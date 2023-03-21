@@ -70,6 +70,11 @@ public class CameraMovement : MonoBehaviour
         _handToolSelected = b;
     }
 
+    public bool GetHandToolStatus()
+    {
+        return _handToolSelected;
+    }
+
     public void ResetCamera()
     {
         this.transform.position = _defaultPos;

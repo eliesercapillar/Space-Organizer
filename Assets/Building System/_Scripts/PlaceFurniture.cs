@@ -10,12 +10,14 @@ public class PlaceFurniture : MonoBehaviour
     [SerializeField] private GameObject _furnitureInFocus;
     [SerializeField] private Transform _parent;
 
+    [SerializeField] private LayerMask _UImask;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private LayerMask _furnitureMask;
     [SerializeField] private float _lastPosY;
 
     private Renderer _rend;
     [SerializeField] private Material _matGrid, _matDefault;
+    [SerializeField] private GameObject _gridOverlay;
 
     private string[] _furnitureTypes = {"BED", "BOOKSHELF1", "LBOOKSHELF2", "THINCHAIR", "STANDARDCHAIR", "ARMCHAIR", "COUCH", "LCOUCH", 
         "LAMP", "NIGHTSTAND", "DESK", "LDESK", "RECTANGLETABLE", "ROUNDTABLE", "SQUARETABLE", "WARDROBE", "TWINWARDDROBE"};
@@ -42,6 +44,8 @@ public class PlaceFurniture : MonoBehaviour
 
     private ButtonManager _buttonManager;
 
+    // ---------------------------------------------------------------------------
+
     void Awake()
     {
         _instance = this;
@@ -49,8 +53,9 @@ public class PlaceFurniture : MonoBehaviour
 
     private void Start()
     {
-        _rend = GameObject.Find("Ground").GetComponent<Renderer>();
-        _rend.material = _matDefault;
+        //_rend = GameObject.Find("Ground").GetComponent<Renderer>();
+        _gridOverlay.SetActive(false);
+        //_rend.material = _matDefault;
         _furnitureInFocus = null;
         _wasLastObjectPlaced = false;
         _stopRaycasts = false;
@@ -73,7 +78,7 @@ public class PlaceFurniture : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(_mousePos);
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, _groundMask))
+                if (!Physics.Raycast(ray, out hit, Mathf.Infinity, _UImask) && Physics.Raycast(ray, out hit, Mathf.Infinity, _groundMask))
                 {
                     int posX = (int)Mathf.Round(hit.point.x);
                     int posZ = (int)Mathf.Round(hit.point.z);
@@ -90,7 +95,7 @@ public class PlaceFurniture : MonoBehaviour
                     RaycastHit hit;
 
                     //Debug.Log("Attempting Raycast");
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, _furnitureMask))
+                    if (!Physics.Raycast(ray, out hit, Mathf.Infinity, _UImask) && Physics.Raycast(ray, out hit, Mathf.Infinity, _furnitureMask))
                     {
                         Debug.Log("We hit " + hit.collider.tag);
                         foreach (string furnitureType in _furnitureTypes)
@@ -131,11 +136,24 @@ public class PlaceFurniture : MonoBehaviour
                 }
             }
         }
-        _rend.material = _matGrid;
+        //_rend.material = _matGrid;
+        _gridOverlay.SetActive(true);
         _furnitureInFocus = obj;
+        if (!_buttonManager.IsFurnitureOpen())
+        {
+            _buttonManager.FurnitureButton();
+            StartCoroutine(WaitForAnim());
+        }
         _buttonManager.InteractableButtons(false);
         _lastPosY = yPos;
         _wasLastObjectPlaced = false;
+
+        IEnumerator WaitForAnim()
+        {
+            yield return new WaitForSeconds(0.52f);
+            _buttonManager.InteractableButtons(false);
+        }
+
     }
 
     public void PlaceObj()
@@ -170,7 +188,8 @@ public class PlaceFurniture : MonoBehaviour
         Destroy(_furnitureInFocus);
         _furnitureInFocus = null;
         _previousFurniture = null;
-        _rend.material = _matDefault;
+        //_rend.material = _matDefault;
+        _gridOverlay.SetActive(false);
         _buttonManager.InteractableButtons(true);
     }
 

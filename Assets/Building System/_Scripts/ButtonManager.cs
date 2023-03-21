@@ -56,7 +56,7 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] Button _handToolButton;
 
     private bool _inHandMode;
-    private CameraMovement _cameraMover;
+    private ChangeCameras _cameraManager;
     private PlaceFurniture _furniturePlacer;
 
     // ---------------------------------------------------------------------------
@@ -75,7 +75,7 @@ public class ButtonManager : MonoBehaviour
         _isLoadMenuDisplayed = false;
         _inZoomMode = false;
         _inHandMode = false;
-        _cameraMover = CameraMovement._instance;
+        _cameraManager = ChangeCameras._instance;
         _furniturePlacer = PlaceFurniture._instance;
     }
 
@@ -101,7 +101,7 @@ public class ButtonManager : MonoBehaviour
             {
                 _handToolButtonImage.color = _blue;
                 _inHandMode = !_inHandMode;
-                _cameraMover.SetHandTool(false);
+                _cameraManager.GetCurrentCamera().SetHandTool(false);
                 _furniturePlacer.StopRayCasts();
             }
         }
@@ -133,7 +133,7 @@ public class ButtonManager : MonoBehaviour
         if (_inHandMode)
         {
             _handToolButtonImage.color = _pink;
-            _cameraMover.SetHandTool(true);
+            _cameraManager.GetCurrentCamera().SetHandTool(true);
             _furniturePlacer.StopRayCasts();
             if (_inZoomMode)
             {
@@ -143,7 +143,7 @@ public class ButtonManager : MonoBehaviour
         else
         {
             _handToolButtonImage.color = _blue;
-            _cameraMover.SetHandTool(false);
+            _cameraManager.GetCurrentCamera().SetHandTool(false);
             _furniturePlacer.StopRayCasts();
         }
     }
@@ -337,7 +337,10 @@ public class ButtonManager : MonoBehaviour
         {
             _furnitureButton.interactable = true;
             _toolsButton.interactable = true;
-            _loadButton.interactable = true;
+            if (!_isFurnitureDisplayed && !_isToolsDisplayed)
+            {
+                _loadButton.interactable = true;
+            }
         }
         else
         {
@@ -345,5 +348,10 @@ public class ButtonManager : MonoBehaviour
             _toolsButton.interactable = false;
             _loadButton.interactable = false;
         }
+    }
+
+    public bool IsFurnitureOpen()
+    {
+        return _isFurnitureDisplayed;
     }
 }
