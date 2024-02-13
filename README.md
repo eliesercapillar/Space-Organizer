@@ -10,12 +10,11 @@ _Created with `Unity 2021.3.13f1`._
 ## Table of Contents
 - [Description](#Description)
 - [Group 32 Members and Contributions](#Group)
-- [Acknowledgement of Used Assets](#Assets)
 
 ## Description <a name = "Description"></a>
 The Space Organizer is a medium fidelity prototype created for the University of Manitoba's COMP 4020 - A01: Milestone 3.
 
-## Group 32 Members and Contributions <a name = "Group"></a>
+## Group 32 Members <a name = "Group"></a>
 **Elieser Capillar** - _7838502_ - _capillae@mymanitoba.ca_
 
 **Theo Gerwing** - _7864797_ - _capillae@mymanitoba.ca_
