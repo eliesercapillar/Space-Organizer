@@ -23,6 +23,3 @@ The Space Organizer is a medium fidelity prototype created for the University of
 **Tanisha Turner** - _7875749_ - _capillae@mymanitoba.ca_
 
 **Tonmoy Ghosh** - _7846222_ - _capillae@mymanitoba.ca_
-
-## Acknowledgement of Used Assets <a name = "Assets"></a>
-...
